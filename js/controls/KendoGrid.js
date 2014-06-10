@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 define([
     'underscore', 'jquery', 'react', 'kendo',
-    '../ImmutableOptimizations'
+    'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, $, React, kendo, ImmutableOptimizations) {
     'use strict';
 

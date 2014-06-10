@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 define([
     'underscore', 'jquery', 'react', 'kendo',
-    '../ControlCommon',
-    '../ImmutableOptimizations'
+    'jsx!bower_components/wingspan-forms/js/ControlCommon',
+    'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, $, React, kendo, ControlCommon, ImmutableOptimizations) {
     'use strict';
 
@@ -86,7 +86,7 @@ define([
                     $el.width(props.width);
                 }
                 $el.kendoComboBox({
-                    autoBind: false,
+                    autoBind: _.isArray(this.props.dataSource) ? true : false,
                     filter: this.props.filter,
                     highlightFirst: false,
                     dataTextField: props.displayField,

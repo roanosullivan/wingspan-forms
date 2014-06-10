@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 define([
     'underscore', 'jquery', 'react',
-    '../util/util',
-    '../util/kendoutil'
+    'jsx!bower_components/wingspan-forms/js/util/util',
+    'jsx!bower_components/wingspan-forms/js/util/kendoutil'
 ], function (_, $, React, util, kendoutil) {
     'use strict';
 

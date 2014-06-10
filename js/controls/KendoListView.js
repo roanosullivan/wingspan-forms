@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 define([
     'underscore', 'jquery', 'react', 'kendo',
-    '../util/kendoutil',
-    '../ImmutableOptimizations'
+    'jsx!bower_components/wingspan-forms/js/util/kendoutil',
+    'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, $, React, kendo, kendoutil, ImmutableOptimizations) {
     'use strict';
 
