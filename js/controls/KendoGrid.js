@@ -11,9 +11,10 @@ define([
         getDefaultProps: function () {
             return {
                 className: '',
-                height: 150, // TODO remove this
                 dataSource: undefined,
-                columns: undefined
+                columns: undefined,
+                options: {},
+                onWidgetCreate: undefined // callback for getting reference to underlying KendoGridWidget
             };
         },
 
@@ -26,11 +27,14 @@ define([
         componentDidMount: function () {
             var $rootNode = $(this.getDOMNode());
             void kendo;
-            $rootNode.kendoGrid({
+            var options = _.extend({
                 dataSource: this.props.dataSource,
-                height: this.props.height,
                 columns: this.props.columns
-            });
+            }, this.props.options);
+            var gridWidget = $rootNode.kendoGrid(options).data('kendoGrid');
+            if(this.props.onWidgetCreate){
+                this.props.onWidgetCreate(gridWidget);
+            }
         },
 
         componentDidUpdate: function (prevProps, prevState) {
