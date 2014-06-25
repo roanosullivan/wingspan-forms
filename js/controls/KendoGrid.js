@@ -28,6 +28,7 @@ define([
             var $rootNode = $(this.getDOMNode());
             void kendo;
             var options = _.extend({
+                autoBind: false,
                 dataSource: this.props.dataSource,
                 columns: this.props.columns
             }, this.props.options);
@@ -35,6 +36,10 @@ define([
             if(this.props.onWidgetCreate){
                 this.props.onWidgetCreate(gridWidget);
             }
+            // http://docs.telerik.com/kendo-ui/api/web/grid
+            // trigger data binding AFTER parent has reference to widget to allow event handlers
+            // to first get reference to the grid widget
+            gridWidget.dataSource.read();
         },
 
         componentDidUpdate: function (prevProps, prevState) {
