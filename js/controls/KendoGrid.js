@@ -57,21 +57,22 @@ define([
 
         componentDidUpdate: function(prevProps, prevState) {
             var widget = this.state.widget;
-
-            // Reset datasource since it might have changed
-            if (this.props.dataSource instanceof Array) {
-                // This better be a datasource that was originally built from inline data.
-                // I don't know how to detect this to verify it.
-                widget.dataSource.data(this.props.dataSource);
+            if(widget){
+                // Reset datasource since it might have changed
+                if (this.props.dataSource instanceof Array) {
+                    // This better be a datasource that was originally built from inline data.
+                    // I don't know how to detect this to verify it.
+                    widget.dataSource.data(this.props.dataSource);
+                }
+                else if (prevProps.dataSource !== this.props.dataSource) {
+                    widget.setDataSource(this.props.dataSource);
+                }
+                // Since we are not autobinding, need to explicitly re-read data source, ..
+                widget.dataSource.read();
+                // Finally, need to re-apply last user-made changes widget state (e.g. sorting, grouping, filtering, etc.)
+                // that was captured in componentWillUpdate
+                this.setWidgetState(this.state.widgetState);
             }
-            else if (prevProps.dataSource !== this.props.dataSource) {
-                widget.setDataSource(this.props.dataSource);
-            }
-            // Since we are not autobinding, need to explicitly re-read data source, ..
-            widget.dataSource.read();
-            // Finally, need to re-apply last user-made changes widget state (e.g. sorting, grouping, filtering, etc.)
-            // that was captured in componentWillUpdate
-            this.setWidgetState(this.state.widgetState);
 
         },
 
