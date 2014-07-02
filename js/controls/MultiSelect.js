@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 define([
-    'underscore', 'jquery', 'react', 'jsx!bower_components/wingspan-forms/js/util/util', 'jsx!bower_components/wingspan-forms/js/ControlCommon',
-    'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
+    'underscore', 'jquery', 'react', 'jsx!assets/wingspan-forms/js/util/util', 'jsx!assets/wingspan-forms/js/ControlCommon',
+    'jsx!assets/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, $, React, u, controlCommon, ImmutableOptimizations) {
     'use strict';
 

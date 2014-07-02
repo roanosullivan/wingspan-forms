@@ -1,5 +1,5 @@
 define([
-    'underscore', 'underscore.string', 'jquery', 'kendo', 'jsx!bower_components/wingspan-forms/js/util/util'
+    'underscore', 'underscore.string', 'jquery', 'kendo', 'jsx!assets/wingspan-forms/js/util/util'
 ], function (_, str, $, kendo, util) {
     'use strict';
     var my = {};
