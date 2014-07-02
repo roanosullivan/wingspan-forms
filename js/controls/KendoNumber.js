@@ -77,14 +77,16 @@ define([
 
             var kendoWidget = $el.data('kendoNumericTextBox');
 
-            if (prevProps.value !== this.props.value) {
-                ControlCommon.setKendoNumberValue(kendoWidget, this.props.value);
-            }
-            if (
-                (prevProps.disabled !== this.props.disabled) ||
-                (prevProps.readonly !== this.props.readonly)
-            ) {
-                ControlCommon.setKendoDisabledReadonly(kendoWidget, this.props.disabled, this.props.readonly);
+            if(kendoWidget){
+                if (prevProps.value !== this.props.value) {
+                    ControlCommon.setKendoNumberValue(kendoWidget, this.props.value);
+                }
+                if (
+                    (prevProps.disabled !== this.props.disabled) ||
+                    (prevProps.readonly !== this.props.readonly)
+                ) {
+                    ControlCommon.setKendoDisabledReadonly(kendoWidget, this.props.disabled, this.props.readonly);
+                }
             }
         },
 
