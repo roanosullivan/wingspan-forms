@@ -16,7 +16,7 @@ define([
                 layout: 'formField',
                 disabled: false,
                 isValid: [true, ''],
-                template: str.sprintf('${%s} - ${%s}', this.props.valueField, this.props.displayField),
+                template: "str.sprintf('${%s} - ${%s}', this.props.valueField, this.props.displayField)",
                 onChange: function () {},
                 readonly: false,
                 noControl: false,
