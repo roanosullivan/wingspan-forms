@@ -70,7 +70,7 @@ define([
             var selectors = this.state.selectors;
             var selections = this.props.selections;
             function option(selector) {
-                return (<option value={selector.id}>{selector.name}</option>);
+                return (<option value={selector.id} key={selector.id} >{selector.name}</option>);
             }
             if (this.props.isFlat) {
                 selectors = _.map(selectors, function (selector) {
