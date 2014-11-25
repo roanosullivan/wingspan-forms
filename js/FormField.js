@@ -3,8 +3,9 @@ define([
     'underscore', 'react',
     'jsx!assets/wingspan-forms/js/AutoControl',
     'jsx!assets/wingspan-forms/js/ControlCommon',
-    'jsx!assets/wingspan-forms/js/ImmutableOptimizations'
-], function (_, React, AutoControl, ControlCommon, ImmutableOptimizations) {
+    'jsx!assets/wingspan-forms/js/ImmutableOptimizations',
+    'util'
+], function (_, React, AutoControl, ControlCommon, ImmutableOptimizations, util) {
     'use strict';
 
     function determineFieldClass(children) {
@@ -45,7 +46,10 @@ define([
 
         /* jshint ignore:start */
         render: function () {
-            var fieldInfo = _.defaults(this.props.fieldInfo, {
+            // roan 20141125: execute _.defaults against a copy of the fieldInfo to preserve immutability of the object
+            //  passed in as a property
+            var fieldInfoCopy = util.deepClone(this.props.fieldInfo);
+            var fieldInfo = _.defaults(fieldInfoCopy, {
                 readOnly: false,
                 disabled: false,
                 label: '',
