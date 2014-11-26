@@ -1,9 +1,9 @@
 /** @jsx React.DOM */
 define([
     'underscore', 'react',
-    'jsx!bower_components/wingspan-forms/js/controls/RadioGroup',
-    'jsx!bower_components/wingspan-forms/js/controls/UserPicker',
-    'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
+    'jsx!assets/wingspan-forms/js/controls/RadioGroup',
+    'jsx!assets/wingspan-forms/js/controls/UserPicker',
+    'jsx!assets/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, React, RadioGroup, UserPicker, ImmutableOptimizations) {
     'use strict';
 

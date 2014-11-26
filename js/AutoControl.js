@@ -1,14 +1,14 @@
 define([
     'underscore', 'react',
-    'jsx!bower_components/wingspan-forms/js/controls/KendoText',
-    'jsx!bower_components/wingspan-forms/js/controls/MultilineText',
-    'jsx!bower_components/wingspan-forms/js/controls/SwitchBox',
-    'jsx!bower_components/wingspan-forms/js/controls/KendoNumber',
-    'jsx!bower_components/wingspan-forms/js/controls/KendoDatetime',
-    'jsx!bower_components/wingspan-forms/js/controls/KendoDate',
-    'jsx!bower_components/wingspan-forms/js/controls/KendoComboBox',
-    'jsx!bower_components/wingspan-forms/js/controls/UserPicker',
-    'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
+    'jsx!assets/wingspan-forms/js/controls/KendoText',
+    'jsx!assets/wingspan-forms/js/controls/MultilineText',
+    'jsx!assets/wingspan-forms/js/controls/SwitchBox',
+    'jsx!assets/wingspan-forms/js/controls/KendoNumber',
+    'jsx!assets/wingspan-forms/js/controls/KendoDatetime',
+    'jsx!assets/wingspan-forms/js/controls/KendoDate',
+    'jsx!assets/wingspan-forms/js/controls/KendoComboBox',
+    'jsx!assets/wingspan-forms/js/controls/UserPicker',
+    'jsx!assets/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, React, KendoText, MultilineText, SwitchBox, KendoNumber, KendoDatetime, KendoDate, KendoComboBox,
              UserPicker, ImmutableOptimizations) {
     'use strict';

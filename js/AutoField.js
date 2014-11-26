@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
 define([
-    'underscore', 'react', 'jsx!bower_components/wingspan-forms/js/FormField', 'jsx!bower_components/wingspan-forms/js/AutoControl', 'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
+    'underscore', 'react', 'jsx!assets/wingspan-forms/js/FormField', 'jsx!assets/wingspan-forms/js/AutoControl', 'jsx!assets/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, React, FormField, AutoControl, ImmutableOptimizations) {
     'use strict';
 

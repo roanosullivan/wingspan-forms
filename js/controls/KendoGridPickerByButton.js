@@ -4,8 +4,8 @@ define([
     'jquery',
     'kendo',
     'react',
-    'jsx!bower_components/wingspan-forms/js/util/util',
-    'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
+    'jsx!assets/wingspan-forms/js/util/util',
+    'jsx!assets/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, $, kendo, React, util, ImmutableOptimizations) {
     'use strict';
 

@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 define([
-    'underscore', 'jquery', 'react', 'jsx!bower_components/wingspan-forms/js/util/util', 'jsx!bower_components/wingspan-forms/js/ControlCommon',
-    'jsx!bower_components/wingspan-forms/js/ImmutableOptimizations'
+    'underscore', 'jquery', 'react', 'jsx!assets/wingspan-forms/js/util/util', 'jsx!assets/wingspan-forms/js/ControlCommon',
+    'jsx!assets/wingspan-forms/js/ImmutableOptimizations'
 ], function (_, $, React, u, controlCommon, ImmutableOptimizations) {
     'use strict';
 
@@ -70,7 +70,7 @@ define([
             var selectors = this.state.selectors;
             var selections = this.props.selections;
             function option(selector) {
-                return (<option value={selector.id}>{selector.name}</option>);
+                return (<option value={selector.id} key={selector.id} >{selector.name}</option>);
             }
             if (this.props.isFlat) {
                 selectors = _.map(selectors, function (selector) {
