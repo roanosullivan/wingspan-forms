@@ -73,7 +73,7 @@ define([
 
             var styles = {
                'width': this.props.width,
-               'margin-left': this.props.marginLeft
+               'marginLeft': this.props.marginLeft
             };
 
             var statusIcon = (hasInfoTooltip ? (<span className="statusIcon" />) : null);

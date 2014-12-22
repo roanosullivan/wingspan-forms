@@ -96,7 +96,12 @@ define([
                 controlProps.displayField = fieldInfo.options.metadata.nameProperty;
             }
 
-            return Control(controlProps);
+            // 20141219 roan: changed per warning "Warning: AutoControl is calling a React component directly.
+            // Use a factory or JSX instead. See: http://fb.me/react-legacyfactory"
+            // - https://gist.github.com/sebmarkbage/ae327f2eda03bf165261
+            // - https://gist.github.com/sebmarkbage/d7bce729f38730399d28
+            return React.createElement(Control, controlProps);
+
         }
     });
 
