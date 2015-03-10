@@ -6,12 +6,12 @@ define([
 ], function (_, str, $, React, controlCommon, ImmutableOptimizations) {
     'use strict';
 
-
     return React.createClass({
         mixins: [ImmutableOptimizations],
 
         getDefaultProps: function() {
             return {
+                id: _.uniqueId(),
                 label: ' ', // will this render as nbsp? No, FIXME
                 layout: 'formField',
                 disabled: false,
@@ -29,8 +29,6 @@ define([
             console.assert(this.props.displayField);
             console.assert(this.props.valueField);
             console.assert(this.props.dataSource);
-
-            this.stableUniqueId = _.uniqueId();
         },
 
         render: function () {
@@ -45,11 +43,11 @@ define([
             /*jshint ignore:start */
             var control = (this.props.noControl
                 ? (<span data-wspt-id="displayValue">{this.props.value}</span>)
-                : (<select id={this.stableUniqueId}/>));
+                : (<select id={this.props.id} />));
 
             return(
                 <div className={classes}>
-                    <label className="formLabel" htmlFor={this.stableUniqueId}>{this.props.label}</label>
+                    <label className="formLabel" htmlFor={this.props.id}>{this.props.label}</label>
                     <div className="formElement">
                         {control}
                     </div>
@@ -74,7 +72,7 @@ define([
                 return;
             }
 
-            var $el = $(this.getDOMNode()).find('#' + this.stableUniqueId);
+            var $el = $(this.getDOMNode()).find('#' + this.props.id);
 
             if (this.props.width) {
                 $el.width(340);
@@ -86,15 +84,15 @@ define([
                 dataValueField: this.props.valueField,
                 dataSource: this.props.dataSource,
                 placeholder: this.props.placeholder,
-                itemTemplate: this.props.template,
                 change: this.onChange
             });
+            {/* itemTemplate: this.props.template, */}
 
             var kendoWidget = $el.data('kendoMultiSelect');
 
             // the 'value' method is a getter/setter that gets/sets the valueField. It will look up the record
             // in the store via the value set here.
-            kendoWidget.value((!_.isEmpty(this.props.value)) ? this.props.value[this.props.valueField] : '');
+            this.setMultiSelectValue(kendoWidget);
 
             if (this.props.disabled) {
                 // disabled beats readonly
@@ -118,20 +116,14 @@ define([
                 return;
             }
 
-            var $el = $(this.getDOMNode()).find('#' + this.stableUniqueId);
+            var $el = $(this.getDOMNode()).find('#' + this.props.id);
             var kendoWidget = $el.data('kendoMultiSelect');
 
             if (prevProps.dataSource !== this.props.dataSource) {
                 kendoWidget.setDataSource(this.props.dataSource);
             }
 
-            var vals = [];
-            var self = this;
-            _.each(this.props.value, function (item) {
-                vals.push(item[self.props.valueField]);
-            });
-
-            kendoWidget.value(vals);
+            this.setMultiSelectValue(kendoWidget);
 
             if (this.props.disabled) {
                 // disabled beats readonly
@@ -143,10 +135,45 @@ define([
             }
         },
 
+        /**
+         * Based on more recent version:
+         * https://raw.githubusercontent.com/wingspan/wingspan-forms/master/js/controls/KendoMultiSelect.js
+         *
+         * This fixes issue where react tries to reuse existing widget when AutoPageItemEdit renders new form detail, and
+         * console has error "Assertion failed: these props cant change after mount" (because dataSource changes).
+         */
+        componentWillUnmount: function () {
+            var $el = $(this.getDOMNode());
+            if($el!==undefined && $el.data('kendoMultiSelect')!==undefined){
+                $el.data('kendoMultiSelect').destroy();
+            }
+        },
+
+        setMultiSelectValue: function(kendoWidget) {
+            var vals = [];
+            var self = this;
+            if(!_.isEmpty(this.props.value)){
+                _.each(this.props.value, function (item) {
+                    if(_.isObject(item)){
+                        vals.push(item[self.props.valueField]);
+                    }else{
+                        vals.push(item);
+                    }
+                });
+            }
+            if(kendoWidget!==undefined){
+                kendoWidget.value(vals);
+            }
+        },
+
         onChange: function (event) {
+            var _this = this;
             var kendoMultiSelect = event.sender;
             var records = kendoMultiSelect.dataItems();
-            this.props.onChange(records);
+            var scalars = _.map(records, function(record){
+                return record[_this.props.valueField];
+            });
+            this.props.onChange(scalars);
         }
     });
 
