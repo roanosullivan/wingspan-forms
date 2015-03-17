@@ -70,7 +70,7 @@ define([
         render: function () {
             return (this.props.noControl
                 ? (<span id={this.props.id}>{getDisplayValue(this.props.value, this.props.displayField)}</span>)
-                : (<select id={this.props.id}/>));
+                : (<select id={this.props.id} name={this.props.name} />));
         },
         /*jshint ignore:end */
 

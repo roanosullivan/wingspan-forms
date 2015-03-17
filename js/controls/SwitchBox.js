@@ -49,6 +49,7 @@ define([
             return (
                 // 20141118 roan: hardcode width to minimum required; this allows "formFieldNoWrap" layout to work
                 <div tabIndex="0" className="switch" style={{width: "7.1em;"}} >
+                    <input type="hidden" name={this.props.name} value={this.props.value} />
                     <ul>
                         <li className={yes ? 'active' : ''} onClick={clickYes}><span className={yes ? 'pos' : ''}>Yes</span></li>
                         <li className={no ? 'active' : ''} onClick={clickNo}><span className={no ? 'neg' : ''}>No</span></li>

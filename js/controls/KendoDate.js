@@ -30,7 +30,7 @@ define([
         render: function () {
             return (this.props.noControl
                 ? (<span>{this.props.value ? kendo.toString(util.parseISODate(this.props.value), this.props.format) : ''}</span>)
-                : (<input id={this.props.id} type="text" />));
+                : (<input id={this.props.id} name={this.props.name} type="text" />));
         },
         /*jshint ignore:end */
 

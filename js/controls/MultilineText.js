@@ -36,6 +36,7 @@ define([
                 <textarea className="k-textbox"
                     value={this.props.value || ''}
                     id={this.props.id}
+                    name={this.props.name}
                     onChange={this.onChange}
                     onBlur={this.props.onBlur}
                     placeholder={this.props.placeholder}

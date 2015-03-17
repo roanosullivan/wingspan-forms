@@ -14,13 +14,14 @@ define([
                 value: undefined,
                 onChange: undefined,
                 isValid: [true, ''],
-                dataSource: undefined
+                dataSource: undefined,
+                layout: "formField"
             };
         },
 
         render: function () {
             return (
-                <FormField fieldInfo={this.props.fieldInfo} isValid={this.props.isValid} key={this.props.fieldInfo.name}>
+                <FormField fieldInfo={this.props.fieldInfo} isValid={this.props.isValid} key={this.props.fieldInfo.name} layout={this.props.layout} >
                     <AutoControl
                         fieldInfo={this.props.fieldInfo}
                         value={this.props.value}

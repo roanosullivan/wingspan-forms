@@ -31,7 +31,7 @@ define([
             /*jshint ignore:start */
             return (this.props.noControl ? (<span>{this.props.value || ''}</span>) : (
                 <input className="k-textbox" value={this.props.value || ''} onChange={this.onChange}
-                    placeholder={this.props.placeholder} id={this.props.id}
+                    placeholder={this.props.placeholder} id={this.props.id} name={this.props.name}
                     readOnly={this.props.readonly}
                     disabled={this.props.disabled} />
             ));

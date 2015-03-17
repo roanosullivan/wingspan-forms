@@ -37,7 +37,7 @@ define([
                 ? (<span>{kendo.toString(this.props.value, this.props.format)}</span>)
                 // KendoNumeric requires multiple onChange handlers, because kendo change event doesn't happen
                 // until blur. We need an event on each keyup on the input, as well as spin events on the widget.
-                : (<input id={this.props.id} type="text" onChange={this.onInputChange} />));
+                : (<input id={this.props.id} name={this.props.name} type="text" onChange={this.onInputChange} />));
         },
         /*jshint ignore:end */
 
