@@ -13,7 +13,7 @@ define([
             // disabled beats readonly
             return 'formFieldDisabled';
         } else if (readonly) {
-            return 'formFieldReadonly';
+            return (!isValid[0] ? 'formFieldReadonly formFieldError' : 'formFieldReadonly');
         } else if (!isValid[0]) {
             return 'formFieldError';
         } else {
@@ -94,8 +94,10 @@ define([
 
     function hideErrorTooltip() {
         var $body = $('body');
-
-        $body.data('kendoErrorTooltip').hide();
+        var $tooltip = $body.data('kendoErrorTooltip');
+        if($tooltip!==undefined){
+            $tooltip.hide();
+        }
     }
 
     function refreshErrorTooltip() {
