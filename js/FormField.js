@@ -4,7 +4,7 @@ define([
     'jsx!assets/wingspan-forms/js/AutoControl',
     'jsx!assets/wingspan-forms/js/ControlCommon',
     'jsx!assets/wingspan-forms/js/ImmutableOptimizations',
-    'util'
+    'jsx!assets/wingspan-forms/js/util/util'
 ], function (_, React, AutoControl, ControlCommon, ImmutableOptimizations, util) {
     'use strict';
 
